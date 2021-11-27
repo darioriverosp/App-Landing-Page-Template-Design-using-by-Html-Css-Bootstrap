@@ -78,8 +78,35 @@ $(document).ready(function () {
       },
     });
   
+    /* ---------- Team Carousel ------------------------ */
+    $(".team-carousel").owlCarousel({
+      loop: true,
+      margin: 0,
+      autoplay: true,
+      responsiveClass: true,
+      responsive: {
+        0: {
+          items: 1,
+        },
+        600: {
+          items: 2,
+        },
+        1000: {
+          items: 3,
+        },
+      },
+    });
+  
+    /* ---------- Page Scrolling ' Scrollit ------------------------ */
 
+    
+    $.scrollIt({
+      topOffset: -50
+    });
 
-
+    /* ---------- Page Scrolling ' Scrollit ------------------------ */
+$(".nav-link").on("click", function(){
+  $(".navbar-collapse").collapse("hide");
+})
 
 });
