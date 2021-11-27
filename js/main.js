@@ -1,3 +1,9 @@
+/* ---------- Preloader ------------------------ */
+
+$(window).on("load", function () {
+  $(".preloader").fadeOut("slow");
+});
+
 $(document).ready(function () {
   /* ---------- Navbar Shrink ------------------------ */
   $(window).on("scroll", function () {
@@ -40,73 +46,102 @@ $(document).ready(function () {
     },
   });
 
-    /* ---------- Screenshots Carousel ------------------------ */
-    $(".screenshots-carousel").owlCarousel({
-      loop: true,
-      margin: 0,
-      autoplay: true,
-      responsiveClass: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 2,
-        },
-        1000: {
-          items: 3,
-        },
+  /* ---------- Screenshots Carousel ------------------------ */
+  $(".screenshots-carousel").owlCarousel({
+    loop: true,
+    margin: 0,
+    autoplay: true,
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
       },
-    });
-  
-    /* ---------- Testimonials Carousel ------------------------ */
-    $(".testimonials-carousel").owlCarousel({
-      loop: true,
-      margin: 0,
-      autoplay: true,
-      responsiveClass: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 2,
-        },
-        1000: {
-          items: 3,
-        },
+      600: {
+        items: 2,
       },
-    });
-  
-    /* ---------- Team Carousel ------------------------ */
-    $(".team-carousel").owlCarousel({
-      loop: true,
-      margin: 0,
-      autoplay: true,
-      responsiveClass: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 2,
-        },
-        1000: {
-          items: 3,
-        },
+      1000: {
+        items: 3,
       },
-    });
-  
-    /* ---------- Page Scrolling ' Scrollit ------------------------ */
+    },
+  });
 
-    
-    $.scrollIt({
-      topOffset: -50
-    });
+  /* ---------- Testimonials Carousel ------------------------ */
+  $(".testimonials-carousel").owlCarousel({
+    loop: true,
+    margin: 0,
+    autoplay: true,
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      1000: {
+        items: 3,
+      },
+    },
+  });
 
-    /* ---------- Page Scrolling ' Scrollit ------------------------ */
-$(".nav-link").on("click", function(){
-  $(".navbar-collapse").collapse("hide");
-})
+  /* ---------- Team Carousel ------------------------ */
+  $(".team-carousel").owlCarousel({
+    loop: true,
+    margin: 0,
+    autoplay: true,
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      1000: {
+        items: 3,
+      },
+    },
+  });
 
+  /* ---------- Page Scrolling ' Scrollit ------------------------ */
+
+  $.scrollIt({
+    topOffset: -50,
+  });
+
+  /* ---------- Page Scrolling ' Scrollit ------------------------ */
+  $(".nav-link").on("click", function () {
+    $(".navbar-collapse").collapse("hide");
+  });
+
+  /* ---------- Toggle Theme - Light & Dark Mode ------------------------ */
+  function toggleTheme() {
+    if (localStorage.getItem("shala-theme") !== null) {
+      if (localStorage.getItem("shala-theme") === "dark") {
+        $("body").addClass("dark");
+      } else $("body").removeClass("dark");
+    }
+    updateIcon();
+  }
+  toggleTheme();
+
+  $(".toggle-theme").on("click", function () {
+    $("body").toggleClass("dark");
+    if ($("body").hasClass("dark")) {
+      localStorage.setItem("shala-theme", "dark");
+    } else {
+      localStorage.setItem("shala-theme", "light");
+    }
+    updateIcon();
+  });
+
+  function updateIcon() {
+    if ($("body").hasClass("dark")) {
+      $(".toggle-theme i").removeClass("fa-moon");
+      $(".toggle-theme i").addClass("fa-sun");
+    } else {
+      $(".toggle-theme i").removeClass("fa-sun");
+      $(".toggle-theme i").addClass("fa-moon");
+    }
+  }
 });
